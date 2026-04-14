@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="https://i.postimg.cc/jq12pWYs/school.png" type="image/png">
+
+<title>福州南林中学官网</title>
+<style>
+body{
+margin:0;
+background:#c0c0c0;
+font-family:"SimSun","PMingLiU",serif;
+font-size:11px;
+}
+.wrapper{
+width:100%;
+aspect-ratio:3/4;
+background:#eaeaea;
+border:2px solid #666;
+}
+
+.top{
+background:#003366;
+color:#fff;
+padding:4px;
+font-weight:bold;
+position:relative;
+}
+
+.logo{
+position:absolute;
+right:5px;
+top:2px;
+}
+.logo img{
+height:24px;
+}
+
+.nav{
+background:#999;
+padding:2px;
+display:flex;
+flex-wrap:wrap;
+}
+.nav span{
+background:#ddd;
+border:1px solid #666;
+padding:2px 4px;
+margin:2px;
+cursor:pointer;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+td{
+border:1px solid #999;
+vertical-align:top;
+}
+
+.title{
+background:#006600;
+color:#fff;
+padding:2px;
+}
+
+.content{
+padding:2px;
+line-height:1.2;
+}
+.content li{
+display: block;
+list-style: none;
+border-bottom:1px dotted #999;
+padding:1px 0;
+margin-left: 0;
+}
+
+.icons{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+}
+.icons div{
+border:1px solid #666;
+margin:1px;
+padding:3px;
+background:#eee;
+text-align:center;
+cursor:pointer;
+}
+
+.marquee{
+background:#ffffcc;
+border:1px solid #999;
+padding:2px;
+}
+
+.click{background:#99ccff !important;}
+
+.page{display:none}
+.page.active{display:block}
+
+.about{padding:6px;background:#fff;}
+.about img{margin:4px 0}
+
+.back{
+background:#003366;
+color:#fff;
+padding:4px;
+cursor:pointer;
+}
+
+.shide-page {
+    padding:8px;
+    background:#fff;
+}
+.shide-page h2 {
+    background:#006600;
+    color:white;
+    padding:6px;
+    text-align:center;
+    margin:0 0 10px 0;
+}
+.profile {
+    border:1px solid #999;
+    margin:8px 0;
+    padding:8px;
+    background:#f9f9f9;
+    overflow:hidden;
+}
+.profile img {
+    width:110px;
+    float:right;
+    margin:0 0 8px 10px;
+    border:1px solid #ccc;
+}
+.profile h3 {
+    margin:0 0 6px 0;
+    color:#003366;
+}
+
+img{width:100%}
+
+/* ===== 弹窗样式 ===== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+.modal-box {
+    background: #eaeaea;
+    border: 3px solid #003366;
+    width: 320px;
+    box-shadow: 5px 5px 0 #666;
+}
+.modal-header {
+    background: #003366;
+    color: #fff;
+    padding: 6px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-header span {
+    font-weight: bold;
+}
+.modal-close {
+    color: #fff;
+    background: #cc0000;
+    width: 22px;
+    height: 22px;
+    text-align: center;
+    line-height: 22px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+.modal-close:hover {
+    background: #ff0000;
+}
+.modal-body {
+    padding: 16px;
+    background: #ddd;
+}
+.modal-body p {
+    margin: 0 0 12px 0;
+    color: #333;
+    font-weight: bold;
+}
+.modal-body input {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 10px;
+    border: 2px solid #999;
+    background: #fff;
+    font-family: "SimSun", serif;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+.modal-error {
+    color: #cc0000;
+    font-size: 11px;
+    margin: 5px 0;
+    min-height: 18px;
+}
+.modal-footer {
+    padding: 10px;
+    background: #ccc;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    border-top: 2px solid #999;
+}
+.modal-btn {
+    background: #ddd;
+    border: 2px solid #666;
+    padding: 6px 20px;
+    font-family: "SimSun", serif;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 12px;
+}
+.modal-btn:hover {
+    background: #bbb;
+}
+
+/* ===== 新闻详情页样式 ===== */
+.news-page {
+    padding: 8px;
+    background: #eaeaea;
+    height: 100%;
+    overflow-y: auto;
+}
+.news-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.news-header .back {
+    margin-right: 10px;
+}
+.news-header h2 {
+    background: #006600;
+    color: white;
+    padding: 6px 15px;
+    margin: 0;
+    font-size: 14px;
+}
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.news-item {
+    background: #fff;
+    border: 2px solid #666;
+    padding: 12px;
+}
+.news-item h3 {
+    margin: 0 0 8px 0;
+    color: #003366;
+    font-size: 13px;
+    border-bottom: 2px solid #006600;
+    padding-bottom: 5px;
+}
+.news-item img {
+    width: 100%;
+    margin: 8px 0;
+    border: 1px solid #999;
+}
+.news-item p {
+    margin: 8px 0 0 0;
+    line-height: 1.5;
+    font-size: 11px;
+    color: #333;
+}
+
+/* 师德师风页脚联系方式 */
+.contact-footer {
+    margin-top: 15px;
+    padding: 10px;
+    background: #003366;
+    color: #fff;
+    text-align: center;
+    font-size: 11px;
+    border-top: 2px solid #006600;
+}
+.contact-footer div {
+    margin: 3px 0;
+}
+
+/* ===== 成绩查询页面样式 ===== */
+.score-page {
+    padding: 12px;
+    background: #eaeaea;
+    height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+.score-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.score-card {
+    background: #fff;
+    border: 2px solid #003366;
+    padding: 15px;
+    margin-top: 5px;
+}
+.score-card h3 {
+    text-align: center;
+    background: #006600;
+    color: white;
+    padding: 8px;
+    margin: 0 0 15px 0;
+    font-size: 16px;
+}
+.score-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.score-list li {
+    padding: 8px 12px;
+    border-bottom: 1px dashed #999;
+    font-size: 14px;
+    font-weight: bold;
+    color: #003366;
+    display: flex;
+    justify-content: space-between;
+}
+.score-list li span:first-child { font-weight: normal; color: #333; }
+.score-list li span:last-child { color: #cc0000; font-size: 16px; }
+.error-msg {
+    text-align: center;
+    color: #cc0000;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 40px 20px;
+    background: #ffffcc;
+    border: 3px solid red;
+    margin-top: 30px;
+}
+
+/* ===== 视频监控全屏页面 ===== */
+.video-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.video-fullscreen .video-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.video-fullscreen video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.video-fullscreen .exit-video-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    border: 2px solid #fff;
+    padding: 8px 18px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 2001;
+    border-radius: 4px;
+}
+.video-fullscreen .exit-video-btn:hover {
+    background: #cc0000;
+}
+/* ========== 图书借阅查询系统页面样式 ========== */
+.library-page {
+    padding: 16px;
+    background: #eaeaea;
+    height: 100%;
+    overflow-y: auto;
+}
+.library-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.library-card {
+    background: #fff;
+    border: 2px solid #003366;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 10px;
+}
+.library-search {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+.library-search input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 2px solid #999;
+    font-size: 14px;
+    font-family: inherit;
+    border-radius: 6px;
+}
+.library-search button {
+    background: #003366;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+.library-search button:hover {
+    background: #004c99;
+}
+.book-list {
+    border-top: 2px solid #006600;
+    padding-top: 15px;
+}
+.book-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px dashed #ccc;
+    cursor: pointer;
+    transition: background 0.1s;
+}
+.book-item:hover {
+    background: #f0f0f0;
+}
+.book-item .book-title {
+    font-weight: bold;
+    color: #003366;
+}
+.book-item .book-status {
+    color: #006600;
+    font-weight: bold;
+}
+.book-item .book-status.borrowed {
+    color: #cc0000;
+}
+.library-tip {
+    background: #ffffcc;
+    padding: 12px;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    border-radius: 6px;
+}
+.empty-books {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+}
+
+@media screen and (max-width: 768px) {
+    body{font-size:13px;}
+    .wrapper{margin:0;border-left:none;border-right:none;box-shadow:none;}
+    .top{padding:10px 12px;font-size:1rem;text-align:center;}
+    .logo img{height:28px;}
+    .nav{padding:6px;gap:4px;justify-content:center;}
+    .nav span{padding:5px 8px;font-size:0.7rem;}
+    table,tbody,tr,td{display:block;width:100%;}
+    tr{display:flex;flex-wrap:wrap;margin-bottom:8px;}
+    td{display:block;width:100%;border:1px solid #999;margin-bottom:6px;}
+    .title{font-size:0.9rem;padding:8px;}
+    .content li{padding:8px 4px;font-size:0.8rem;}
+    .icons{grid-template-columns:repeat(2,1fr);gap:8px;}
+    .icons div{padding:8px 2px;font-size:0.7rem;}
+    .fake-toast{font-size:12px;padding:6px 14px;bottom:20px;}
+    .library-search input{font-size:13px;}
+    .library-search button{padding:8px 16px;}
+    .book-item{flex-direction:column;align-items:flex-start;gap:5px;}
+}
+img{max-width:100%;height:auto;}
+</style>
+</head>
+<body>
+
+<!-- 主页 -->
+<div id="home" class="page active">
+<div class="wrapper">
+  <div class="top">    
+    福州南林中学官方网站    
+    <div class="logo">    
+      <img src="https://i.postimg.cc/tJR0J8H3/school.png" alt="校徽">    
+    </div>    
+  </div>  
+
+  <div class="nav">    
+    <span onclick="clickEffect(this)">首页</span>    
+    <span onclick="goPage('about');clickEffect(this)">学校介绍</span>    
+    <span onclick="openNewsModal();clickEffect(this)">学校新闻</span>    
+    <span onclick="clickEffect(this)">特色创建</span>    
+    <span onclick="clickEffect(this)">德育园地</span>    
+    <span onclick="clickEffect(this)">课程教学</span>    
+    <span onclick="clickEffect(this)">校本研修</span>    
+    <span onclick="clickEffect(this)">教育科研</span>    
+    <span onclick="clickEffect(this)">教工之家</span>    
+    <span onclick="goPage('shide');clickEffect(this)">师德师风</span>    
+    <span onclick="clickEffect(this)">学习园地</span>    
+  </div>  
+
+  <div class="marquee">    
+    <marquee>    
+      【公告】关于进一步加强校园常态化安全管理工作的实施意见（修订版）｜    
+      【通报】2026年春季学期教学秩序专项检查阶段性总结报告｜    
+      【提醒】关于晚自习纪律管理与宿舍巡查制度优化调整的通知｜    
+      【说明】校园基础设施维护与信息化系统升级统一安排公告    
+    </marquee>    
+  </div>  
+
+  <table>  
+    <tr>    
+      <td colspan="2"><img src="https://picsum.photos/600/120" alt="banner"></td>    
+    </tr>  
+
+    <tr>    
+      <td>    
+        <div class="title">校园通知</div>    
+        <div class="content">    
+          <li onclick="clickEffect(this)">关于2026年春季学期开学及教学准备工作的综合部署通知</li>    
+          <li onclick="clickEffect(this)">关于期中考试组织实施方案及监考安排的详细说明</li>    
+          <li onclick="clickEffect(this)">关于进一步规范学生晚自习纪律管理制度的补充意见</li>    
+          <li onclick="clickEffect(this)">关于加强宿舍夜间安全巡查与应急处置机制的通知</li>    
+          <li onclick="clickEffect(this)">关于校园食堂窗口服务流程优化调整的实施细则</li>    
+          <li onclick="clickEffect(this)">关于校园施工期间安全防护与人员出入管理的公告</li>    
+          <li onclick="clickEffect(this)">关于校园网络系统维护升级及数据备份工作的通知</li>    
+          <li onclick="clickEffect(this)">关于校园一卡通系统功能优化升级与测试安排说明</li>    
+          <li onclick="clickEffect(this)">关于近期阶段性放假安排及调课事项的统一公示说明</li>    
+          <li onclick="clickEffect(this)">关于开展全校范围安全隐患排查整治工作的实施方案</li>    
+          <li onclick="clickEffect(this)">关于加强校园文明行为规范与纪律建设的补充通知</li>    
+          <li onclick="clickEffect(this)">关于学生综合素质评价系统更新升级的通知说明</li>    
+        </div>    
+      </td>  
+      <td>    
+        <div class="title">校园新闻</div>    
+        <div class="content">    
+          <li onclick="clickEffect(this)">我校成功举办2026年度校园科技文化节系列活动成果综述</li>    
+          <li onclick="clickEffect(this)">2026年秋季田径运动会圆满闭幕及优秀运动员表彰大会报道</li>    
+          <li onclick="clickEffect(this)">校园文化艺术节正式启动暨开幕式活动情况综合报道</li>    
+          <li onclick="clickEffect(this)">心理健康教育专题讲座系列活动圆满开展情况说明</li>    
+          <li onclick="clickEffect(this)">新建实验综合楼正式投入使用并举行启用仪式报道</li>    
+          <li onclick="clickEffect(this)">优秀教师年度表彰大会隆重举行暨先进事迹宣传报道</li>    
+          <li onclick="clickEffect(this)">全体学生代表大会顺利召开并形成重要决议情况总结</li>    
+          <li onclick="clickEffect(this)">校际教育教学交流合作活动持续推进情况综合报道</li>    
+          <li onclick="clickEffect(this)">2026级新生军训工作圆满完成暨成果展示总结报告</li>    
+          <li onclick="clickEffect(this)">学生社团联合活动成果展示暨校园文化建设推进情况</li>    
+          <li onclick="clickEffect(this)">学校教育教学质量提升工程阶段性成果发布说明</li>    
+          <li onclick="clickEffect(this)">校园安全文明建设专项行动实施成果通报</li>    
+        </div>    
+      </td>    
+    </table>  
+
+    <tr>    
+      <td colspan="2">    
+        <div class="title">信息平台</div>    
+        <div class="icons" style="grid-template-columns:repeat(3,1fr)">    
+          <div onclick="clickEffect(this)">信息公开综合管理平台系统</div>    
+          <div onclick="clickEffect(this)">行政办公自动化协同处理系统</div>    
+          <div onclick="clickEffect(this)">教学资源数字化共享服务平台</div>    
+          <div onclick="clickEffect(this)">学生心理健康测评分析系统</div>    
+          <div onclick="clickEffect(this)">校园统一身份认证邮箱系统</div>    
+          <div onclick="openScoreQuery();clickEffect(this)">学生学业成绩查询与分析平台</div>    
+        </div>    
+      </td>    
+    </table>  
+
+    <tr>    
+      <td>    
+        <div class="title">学习园地</div>    
+        <div class="content">    
+          <li onclick="clickEffect(this)">高三年级第一轮复习重点知识体系整理与强化训练资料</li>    
+          <li onclick="clickEffect(this)">高中数学压轴题专项训练方法归纳与典型例题解析汇编</li>    
+          <li onclick="clickEffect(this)">英语听力能力提升专项训练计划与阶段性练习材料</li>    
+          <li onclick="clickEffect(this)">优秀学生作文精选集及写作技巧系统化指导方案</li>    
+          <li onclick="clickEffect(this)">物理竞赛基础题型分类整理与解题思路总结分析</li>    
+          <li onclick="clickEffect(this)">化学实验操作规范流程与实验报告标准撰写指导</li>    
+          <li onclick="clickEffect(this)">历史学科核心知识体系结构化梳理与复习策略建议</li>    
+          <li onclick="clickEffect(this)">地理综合题答题技巧专项训练与案例分析材料汇编</li>    
+          <li onclick="clickEffect(this)">生物核心考点系统归纳与高频题型解析整理</li>    
+          <li onclick="clickEffect(this)">政治时事热点专题分析与理论结合应用指导材料</li>    
+          <li onclick="clickEffect(this)">学科融合式学习方法实践案例与经验总结报告</li>    
+        </div>    
+      <tr>  
+      <td rowspan="2">    
+        <div class="title">德育园地</div>    
+        <div class="content">    
+          <li onclick="clickEffect(this)">主题班会优秀案例展示与德育实践经验系统总结报告</li>    
+          <li onclick="clickEffect(this)">文明礼仪教育周系列活动实施方案与成果总结分析</li>    
+          <li onclick="clickEffect(this)">学生志愿服务与社会实践活动记录汇总与评价报告</li>    
+          <li onclick="clickEffect(this)">心理健康教育专题讲座与干预机制建设实施说明</li>    
+          <li onclick="clickEffect(this)">学生日常行为规范检查与综合评价制度实施情况通报</li>    
+          <li onclick="clickEffect(this)">违纪学生处理流程及教育引导机制优化说明</li>    
+          <li onclick="clickEffect(this)">班级量化管理评分体系运行情况及阶段性结果分析</li>    
+          <li onclick="clickEffect(this)">优秀学生及先进个人评选全过程记录与公示说明</li>    
+          <li onclick="clickEffect(this)">德育主题教育活动体系化建设与实施成果报告</li>    
+          <li onclick="clickEffect(this)">班主任工作会议纪要及德育工作经验交流汇总</li>    
+          <li onclick="clickEffect(this)">校园德育信息化管理系统运行情况分析报告</li>    
+        </div>    
+      </td>    
+    </table>  
+
+    <tr>    
+      <td>    
+        <div class="title">信息服务</div>    
+        <div class="icons">    
+          <div onclick="clickEffect(this)">校园文件管理系统</div>    
+          <div onclick="openVideoModal();clickEffect(this)">视频监控综合平台</div>    
+          <div onclick="clickEffect(this)">在线报修申请系统</div>    
+          <div onclick="clickEffect(this)">设备维护登记系统</div>    
+          <div onclick="clickEffect(this)">网站后台管理系统</div>    
+          <!-- 图书借阅查询系统：跳转到独立页面 -->
+          <div onclick="openLibraryPage();clickEffect(this)">图书借阅查询系统</div>   
+        </div>    
+      </td>    
+    </tr>  
+
+    <tr>    
+      <td>
+
+    <tr>    
+      <td>    
+        <div class="title">课程教学</div>    
+        <div class="content">    
+          <li onclick="clickEffect(this)">2025-2026学年教学计划与课程实施总体方案说明</li>    
+          <li onclick="clickEffect(this)">校级公开课教学活动安排及观摩评价机制说明</li>    
+          <li onclick="clickEffect(this)">课堂教学改革深化推进实施方案与阶段性成果</li>    
+          <li onclick="clickEffect(this)">阶段性教学质量监测分析报告与改进建议</li>    
+          <li onclick="clickEffect(this)">学生选课系统开放运行说明及操作指南</li>    
+          <li onclick="clickEffect(this)">课程结构优化调整方案与实施细则说明</li>    
+          <li onclick="clickEffect(this)">作业规范管理制度及教学检查情况通报</li>    
+          <li onclick="clickEffect(this)">考试命题原则与评分标准统一实施方案</li>    
+          <li onclick="clickEffect(this)">教学督导检查记录与反馈意见整理报告</li>    
+          <li onclick="clickEffect(this)">课堂教学效果评价体系与学生反馈分析报告</li>    
+          <li onclick="clickEffect(this)">教育教学数字化转型推进实施方案</li>    
+        </div>    
+      </td>  
+      <td>    
+        <div class="title">校本研修</div>    
+        <div class="content">    
+          <li onclick="clickEffect(this)">校本教研活动年度实施计划及阶段性推进报告</li>    
+          <li onclick="clickEffect(this)">各学科备课组集体备课活动记录与成果总结</li>    
+          <li onclick="clickEffect(this)">教师听课评课活动实施情况与评价分析报告</li>    
+          <li onclick="clickEffect(this)">优质课评选活动组织实施与优秀案例展示</li>    
+          <li onclick="clickEffect(this)">教师教学反思与专业成长发展案例汇编</li>    
+          <li onclick="clickEffect(this)">教师专业能力提升培训计划与实施情况总结</li>    
+          <li onclick="clickEffect(this)">教研活动阶段性成果总结与经验推广报告</li>    
+          <li onclick="clickEffect(this)">课堂教学典型案例分析与实践研究成果</li>    
+          <li onclick="clickEffect(this)">教师跨学科交流研讨活动纪要汇总</li>    
+          <li onclick="clickEffect(this)">校本研修成果展示与推广应用说明</li>    
+        </div>    
+      </td>    
+    </tr>  
+
+    <tr>    
+      <td>    
+        <div class="title">教育科研</div>    
+        <div class="content">    
+          <li onclick="clickEffect(this)">省级重点课题研究阶段性进展与成果报告</li>    
+          <li onclick="clickEffect(this)">教育科研成果推广应用情况与分析报告</li>    
+          <li onclick="clickEffect(this)">教师论文发表及获奖情况统计与分析</li>    
+          <li onclick="clickEffect(this)">科研项目立项申报及审批结果公示说明</li>    
+          <li onclick="clickEffect(this)">校际学术交流合作活动实施情况总结报告</li>    
+          <li onclick="clickEffect(this)">科研工作年度总结与未来发展规划说明</li>    
+          <li onclick="clickEffect(this)">教育教学研究报告编制与成果发布说明</li>    
+          <li onclick="clickEffect(this)">科研资料规范化整理与档案管理制度说明</li>    
+          <li onclick="clickEffect(this)">科研项目中期评审工作安排与执行情况</li>    
+          <li onclick="clickEffect(this)">专家指导意见反馈与改进措施落实情况</li>    
+          <li onclick="clickEffect(this)">教育科研信息化平台建设与运行情况报告</li>    
+        </div>    
+      </td>  
+      <td>    
+        <div class="title">教工之家</div>    
+        <div class="content">    
+          <li onclick="clickEffect(this)">教职工文体活动年度实施计划与组织方案</li>    
+          <li onclick="clickEffect(this)">工会会议纪要与教职工意见建议汇总报告</li>    
+          <li onclick="clickEffect(this)">教职工福利发放实施情况说明与公示</li>    
+          <li onclick="clickEffect(this)">教师座谈交流会议记录与反馈意见整理</li>    
+          <li onclick="clickEffect(this)">节假日教职工活动组织安排与实施方案</li>    
+          <li onclick="clickEffect(this)">教职工文体竞赛活动总结与成果展示</li>    
+          <li onclick="clickEffect(this)">教师专业发展培训活动实施情况记录</li>    
+          <li onclick="clickEffect(this)">教师健康体检安排及结果反馈说明</li>    
+          <li onclick="clickEffect(this)">教职工心理关怀与支持机制建设情况</li>    
+          <li onclick="clickEffect(this)">教职工意见征集与问题整改落实情况报告</li>    
+        </div>    
+      </td>    
+    </tr>  
+
+    <tr>    
+      <td>    
+        <div class="title">师德师风</div>    
+        <div class="content">    
+          <li onclick="clickEffect(this)">师德师风建设年度考核实施方案与执行情况</li>    
+          <li onclick="clickEffect(this)">优秀教师及师德标兵评选结果与宣传报道</li>    
+          <li onclick="clickEffect(this)">教师职业道德培训活动组织与实施情况说明</li>    
+          <li onclick="clickEffect(this)">师德失范行为处理流程及通报制度说明</li>    
+          <li onclick="clickEffect(this)">教师师德承诺制度签订与执行情况报告</li>    
+          <li onclick="clickEffect(this)">师德考核结果统计与等级评定分析说明</li>    
+          <li onclick="clickEffect(this)">师德问题整改落实情况与阶段性总结报告</li>    
+          <li onclick="clickEffect(this)">师德先进个人评选全过程记录与公示说明</li>    
+          <li onclick="clickEffect(this)">师德监督反馈渠道建设与运行情况说明</li>    
+          <li onclick="clickEffect(this)">师德学习教育活动开展与成果总结报告</li>    
+        </div>    
+      </td>  
+      <td>    
+        <div class="title">校园风采</div>    
+        <div class="content">    
+          <li onclick="clickEffect(this)">优秀学生先进事迹展示与典型案例宣传</li>    
+          <li onclick="clickEffect(this)">校园摄影作品评选与优秀作品展示合集</li>    
+          <li onclick="clickEffect(this)">学生社团活动开展情况与成果展示汇总</li>    
+          <li onclick="clickEffect(this)">学科竞赛获奖情况统计与优秀成果展示</li>    
+          <li onclick="clickEffect(this)">校园文艺汇演活动回顾与节目成果展示</li>    
+          <li onclick="clickEffect(this)">体育赛事成绩统计与优秀运动员展示</li>    
+          <li onclick="clickEffect(this)">志愿服务活动优秀案例与先进个人展示</li>    
+          <li onclick="clickEffect(this)">校园艺术作品展览与创作成果汇总展示</li>    
+          <li onclick="clickEffect(this)">学生日常学习生活记录与成长轨迹展示</li>    
+          <li onclick="clickEffect(this)">学生综合素质发展档案与成果展示系统</li>    
+        </div>    
+      </td>    
+    </tr>  
+
+    <tr>    
+      <td colspan="2">    
+        <div class="title">图片导航</div>    
+        <img src="https://picsum.photos/600/60" alt="图片导航">    
+      </td>    
+    </tr>  
+  </table>  
+</div>
+</div>
+
+<!-- 学校介绍 -->
+<div id="about" class="page">
+<div class="wrapper">
+  <div class="back" onclick="goPage('home')">← 返回</div>
+  <div class="about">    
+    <p>① 学校概况</p>福州南林中学坐落于人文底蕴厚重、风光秀丽的福州市，是一所历史悠久、声誉卓著的省级示范性重点高中，也是福建省教育厅认定的一级达标高中。多年来，学校凭借先进的办学理念、雄厚的师资力量、优异的教学质量和完善的育人环境，成为福州市乃至福建省基础教育领域的标杆学校，深受社会各界、广大家长与学生的高度认可与信赖。<img src="https://i.postimg.cc/vTJ8ZjnK/image.jpg" alt="学校概况">    
+    <p>② 校园环境</p>学校2009年办校，占地面积约130亩，校园布局科学合理，建筑风格大气典雅，环境优美宜人，绿化覆盖率超过45%，四季花木繁茂，书香气息浓郁，是名副其实的"花园式学校""绿色文明校园"。校内教学、运动、生活、实践功能分区清晰，设施设备现代化、标准化、智能化，充分满足新时代高中教育教学与学生全面发展的需求。学校拥有现代化综合教学楼5栋，标准多媒体教室54间，所有教室均配备智慧黑板、中央空调、护眼照明系统及高速网络，为课堂教学提供坚实保障。实验楼内设有物理、化学、生物标准实验室16间，仪器配备达到省内一流、国内先进水平，能够充分满足学生实验操作、探究学习与学科竞赛需求。学校图书馆建筑面积近3000平方米，馆藏纸质图书15万余册，电子图书8万余册，报刊杂志近200种，设有开放式阅览区、电子阅览区、自习区、研讨室等多个功能区域，可同时容纳600名学生阅读学习，是学生拓展知识、提升素养的重要阵地。<img src="https://i.postimg.cc/nVgh2s5t/image-7.jpg" alt="校园环境">    
+    <p>③ 教学设施</p>为促进学生全面发展，学校高标准建设了体育艺术设施，包括标准400米塑胶环形跑道运动场、室内体育馆、篮球场、排球场、羽毛球场、乒乓球室、武术室、舞蹈教室、音乐教室、美术画室、书法教室、心理辅导中心、科技活动室等，为学生开展体育锻炼、艺术熏陶、科技创新和心理健康教育提供了充足空间。学生公寓整洁舒适，共有宿舍楼4栋，可容纳近2000名学生住宿，每间宿舍均配备独立卫生间、淋浴系统、空调、储物柜和高速无线网络，实行24小时专人管理与安全值守。学校食堂宽敞明亮，卫生等级达到A级标准，可同时容纳1800人就餐，菜品丰富多样、营养均衡、价格合理，严格落实食品安全管理制度，全力保障学生饮食健康。<img src="https://i.postimg.cc/v8kZh1KW/image-5.jpg" alt="教学设施">    
+    <p>④ 师资力量</p>在办学规模上，学校现有全日制高中教学班48个，在校学生2400余人，是福州市规模较大、办学稳定的优质重点高中。学校始终坚持"人才强校"战略，打造了一支结构合理、师德高尚、业务精湛、富有活力的高水平教师队伍。全校现有教职工236人，其中专任教师208人，包括特级教师8人，高级教师86人，一级教师102人；拥有省级学科带头人15人，市级学科带头人32人，市级骨干教师47人，具有硕士及以上学历教师79人，多位教师荣获国家级、省级优秀教师、优秀班主任、先进教育工作者等称号。教师团队教学经验丰富，教研能力突出，长期承担省市级教研课题，多次在全国、省、市级教学技能大赛、优质课评比中斩获一等奖，形成了"乐教、善导、严谨、求真"的优良教风，为学校高质量发展提供了强有力的人才支撑。<img src="https://i.postimg.cc/Kcw8fKW5/image-3.jpg" alt="师资力量">    
+    <p>⑤ 教学成果</p>学校坚持"立德树人、全面育人、质量立校、特色发展"的办学理念，以"厚德、博学、笃行、致远"为校训，形成了"勤学、善思、明辨、进取"的优良学风和"文明、和谐、务实、创新"的良好校风。在教学管理上，学校严格执行国家课程方案，深化课堂教学改革，推进分层教学、精准教学、个性化辅导，注重培养学生的核心素养、创新精神与实践能力。作为省级重点高中，学校教学成绩长期稳居福州市前列，高考成绩连年攀升，屡创佳绩。近五年来，学校特殊类型招生录取控制分数线（一本）上线率稳定在85%—90%，本科上线率连续保持99%以上，每年均有大批学生考入清华大学、北京大学、复旦大学、上海交通大学、浙江大学、中国科学技术大学、南京大学、厦门大学、福州大学等全国顶尖"985""211"和"双一流"高校。学校多次被福州市教育局授予"高中教育教学质量先进单位""高考突出贡献奖""办学效益显著学校"等荣誉，是众多学子实现人生理想的重要平台。<img src="https://i.postimg.cc/2jMSGqtd/image-4.jpg" alt="教学成果">    
+    <p>⑥ 素质教育</p>在狠抓教学质量的同时，学校高度重视素质教育与学生全面发展，坚持五育并举，构建多元化育人体系。学校开设丰富多彩的校本课程和社团活动，现有学科竞赛、科技创新、文学朗诵、英语演讲、书法美术、音乐舞蹈、篮球足球、田径、武术、志愿服务、校园广播、模拟联合国、心理成长等各类学生社团30余个，覆盖人文、科学、艺术、体育、实践等多个领域。学校定期举办校园文化艺术节、体育运动会、科技节、读书节、主题辩论赛、志愿服务、社会实践等大型活动，为学生提供展示自我、锻炼能力、提升素养的广阔舞台。近年来，学生在全国中学生学科竞赛、青少年科技创新大赛、艺术展演、体育比赛等活动中表现优异，累计获得国家级奖项80余项、省级奖项280余项、市级奖项600余项，充分展现了南林学子朝气蓬勃、全面发展的精神风貌。<img src="https://i.postimg.cc/1R23Bgdk/image-6.jpg" alt="素质教育">    
+    <p>⑦ 德育建设</p>学校始终把德育工作放在首位，构建"全员育人、全程育人、全方位育人"的德育体系，注重学生行为习惯养成、道德品质培养和理想信念教育，通过主题班会、升旗仪式、榜样宣讲、感恩教育、法治教育、心理健康教育等多种形式，引导学生树立正确的世界观、人生观和价值观。学校管理严格规范，校风学风纯正，校园安全稳定，学生文明有礼、勤奋向上，师生关系和谐融洽，形成了积极健康、向善向美的育人氛围。
+​凭借突出的办学成果和良好的社会口碑，福州南林中学先后荣获"福建省文明校园""福建省德育先进学校""福建省绿色学校""福建省平安校园""福州市教育系统先进集体""福州市高中教学质量优胜奖""家长放心满意学校""青少年科普教育基地"等多项荣誉称号。<img src="https://i.postimg.cc/rwLF6BMn/IMG-20260413-182120.png" alt="德育建设">    
+    <p>⑧ 发展愿景</p>新时代新征程，福州南林中学将继续坚守教育初心，牢记育人使命，以更高的标准、更实的举措、更优的服务，不断提升办学品质，努力建设成为省内一流、全国知名的现代化重点高中，为国家培养更多有理想、有本领、有担当的新时代优秀人才，为福州教育事业发展贡献更大力量。<img src="https://i.postimg.cc/zG1Xms8M/IMG-20260413-182136.png" alt="发展愿景">    
+  </div>  
+</div>
+</div>
+
+<!-- 师德师风页面 -->
+<div id="shide" class="page">
+<div class="wrapper">
+  <div class="back" onclick="goPage('home')">← 返回</div>
+  <div class="shide-page">
+    <h2>南林学校行政及教师代表资料</h2>
+    
+    <div class="profile">
+      <img src="https://i.postimg.cc/1RTNXGkM/IMG-20260413-203027.png" alt="校长 陈景明">
+      <h3>校长：陈景明</h3>
+      <p><strong>性别：</strong>男　<strong>年龄：</strong>48岁　<strong>学历：</strong>教育学硕士研究生　<strong>任职年限：</strong>6年</p>
+      <p><strong>个人简介：</strong>深耕基础教育领域25年，先后在多所重点中小学担任管理职务，教育管理经验丰富。秉持"立德树人、因材施教"的办学理念，注重校园文化建设与学生综合素质培养，大力推进校园教学改革、硬件设施升级，打造温馨且优质的校园学习生活环境。工作作风严谨务实，善于统筹学校整体发展规划，重视师资队伍建设与家校共育，深受师生、家长认可，带领南林学校多次获得区域教育教学先进单位称号。</p>
+    </div>
+
+    <div class="profile">
+      <img src="https://i.postimg.cc/QCb8Qr6b/IMG-20260413-202954.png" alt="副校长 林婉清">
+      <h3>副校长：林婉清</h3>
+      <p><strong>性别：</strong>女　<strong>年龄：</strong>42岁　<strong>学历：</strong>汉语言文学本科　<strong>任职年限：</strong>4年</p>
+      <p><strong>分管工作：</strong>主抓学校教学教研、教师培训、课程安排工作</p>
+      <p><strong>个人简介：</strong>资深中学高级教师，语文教学功底深厚，曾获评市级优秀教师、学科带头人。精通基础教育教学管理流程，专注于优化课堂教学模式、提升教学质量，牵头组建学校教研小组，推动校本课程研发与青年教师培养。性格温和干练，沟通协调能力极强，专注教学细节管理，助力学校教学水平稳步提升，是校长的得力助手。</p>
+    </div>
+
+    <div class="profile">
+      <img src="https://i.postimg.cc/7YdcKWpM/IMG-20260413-203211.png" alt="教导主任 张磊">
+      <h3>教导主任：张磊</h3>
+      <p><strong>性别：</strong>男　<strong>年龄：</strong>36岁　<strong>学历：</strong>数学教育本科　<strong>任职年限：</strong>3年</p>
+      <p><strong>分管工作：</strong>负责日常教学秩序管理、学生学籍管理、考试组织、课堂纪律督查、教学活动落实</p>
+      <p><strong>个人简介：</strong>青年骨干教师，教学与管理双优人才，熟悉中小学教学管理各项规章制度，工作认真负责、执行力强。日常严格把控教学流程，及时解决教学中出现的各类问题，注重学风建设，善于调动学生学习积极性。同时兼顾数学学科教学，课堂风格风趣严谨，深受学生喜爱，全力保障学校日常教学工作有序高效开展。</p>
+    </div>
+
+    <div class="profile">
+      <img src="https://i.postimg.cc/8cPQVfH6/IMG-20260413-203152.png" alt="教师代表 苏晚">
+      <h3>教师代表一：苏晚</h3>
+      <p><strong>性别：</strong>女　<strong>年龄：</strong>30岁　<strong>任教科目：</strong>英语　<strong>职称：</strong>一级教师</p>
+      <p><strong>个人简介：</strong>毕业于重点师范大学英语专业，专业能力扎实，从事英语教学8年，擅长沉浸式英语教学，课堂氛围轻松活跃，教学方法新颖，能充分激发学生英语学习兴趣。多次带领学生参加市级英语竞赛并斩获佳绩，获评校级优秀班主任、教学能手。对待学生耐心细心，注重个性化教学，亲和力极强，是学生眼中亦师亦友的暖心老师。</p>
+    </div>
+
+    <div class="profile">
+      <img src="https://i.postimg.cc/jjXMYgkX/IMG-20260413-203224.png" alt="教师代表 周健">
+      <h3>教师代表二：周健</h3>
+      <p><strong>性别：</strong>男　<strong>年龄：</strong>45岁　<strong>任教科目：</strong>物理　<strong>职称：</strong>高级教师</p>
+      <p><strong>个人简介：</strong>从事物理教学17年，教学经验极其丰富，深谙中学物理教学重难点，擅长将理论知识与生活实践结合，培养学生逻辑思维与动手实践能力。曾参与多项物理教学课题研究，发表多篇教学论文，是区域内物理学科骨干教师。教学风格沉稳专业，对待工作严谨负责，注重学生品德与学业同步发展，带班成绩优异，深受学生尊敬与家长信任。</p>
+    </div>
+
+    <p style="text-align:center;color:#666;font-size:10px;margin-top:15px;">
+      —— 资料更新于2026年4月 ——<br>
+      学校始终坚持高标准师德要求，为每一位学生提供优质教育服务。
+    </p>
+    
+    <div class="contact-footer">
+      <div class="contact-footer">
+  <div>🏫 学校地址：福建省福州市仓山区南林路13号</div>
+  <div>📞 学校电话：1691189116</div>
+</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 新闻详情页 -->
+<div id="newsDetail" class="page">
+<div class="wrapper">
+  <div class="news-page">
+    <div class="news-header">
+      <div class="back" onclick="goPage('home')">← 返回首页</div>
+      <h2>📰 校园新闻详情</h2>
+    </div>
+    <div class="news-list">
+      <div class="news-item">
+        <h3>关于优化课堂点名制度的通知</h3>
+        <img src="https://i.postimg.cc/yNb6pqS3/IMG-20260413-234020.png" alt="点名">
+        <p>为进一步规范课堂教学秩序，提升点名效率，教务处对现行点名册进行了统一调整。调整后，各班级点名册将预留一个固定空位，用于特殊情况记录。该空位无需填写姓名，也不纳入出勤统计范围。部分教师反映，在试行过程中，点名环节偶尔出现"重复应答"现象。经核查，系学生代答或听觉误判所致。教务处提醒：点名时应逐一确认，不必对异常情况过度解读。</p>
+      </div>
+      <div class="news-item">
+        <h3>关于晚自习纪律检查情况的通报</h3>
+        <img src="https://i.postimg.cc/mZNkRnxz/IMG-20260413-234248.png" alt="晚自习">
+        <p>本周晚自习整体秩序良好，绝大多数班级保持安静专注的学习氛围。个别班级反映，在环境极度安静时，教室后排存在轻微杂音，经巡查未发现异常人员或设备问题。后勤部门已对相关教室进行通风与结构检查，确认无安全隐患。学校提示：请同学们保持良好作息，避免因疲劳产生错觉。</p>
+      </div>
+      <div class="news-item">
+        <h3>关于作业收交情况的说明</h3>
+        <img src="https://i.postimg.cc/KcLLTf6b/IMG-20260413-234103.png" alt="收交作业">
+        <p>近期作业检查中发现，个别班级出现"多出一本未署名作业本"的情况。经核对，该类作业本内容完整，但未标注姓名及班级信息，封面存在模糊字迹痕迹。教师已统一按"无主作业"处理，并未计入成绩。教务处建议：学生务必规范书写姓名，避免影响成绩统计。</p>
+      </div>
+      <div class="news-item">
+        <h3>关于教室座位安排的补充规定</h3>
+        <img src="https://i.postimg.cc/h49zvjmn/IMG-20260413-234130.png" alt="教室座位">
+        <p>为优化学习环境，各班级应合理安排座位分布，确保采光与通风条件良好。同时，建议最后一排靠窗位置暂不固定安排学生，可作为临时调配座位使用。部分教师反馈，该位置在使用过程中存在"注意力分散"的情况，具体原因仍在观察中。</p>
+      </div>
+      <div class="news-item">
+        <h3>关于历史数据整理工作的阶段性说明</h3>
+        <img src="https://i.postimg.cc/fb27HbCQ/IMG-20260413-234036.png" alt="历史数据">
+        <p>学校近期对历年学生档案及出勤记录进行统一整理与归档。在数据核对过程中，发现个别历史记录存在统计偏差，包括：人数统计与名单不完全对应，个别记录存在重复标记或空缺项。相关问题已归类为"历史数据误差"，不影响现行教学管理。系统维护期间，曾短暂出现自动补全记录的情况，目前已恢复正常。学校强调：请广大师生以官方公布数据为准，不传播未经核实的信息。</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 成绩查询页面 -->
+<div id="scorePage" class="page">
+<div class="wrapper">
+  <div class="score-page">
+    <div class="score-header">
+      <div class="back" onclick="goPage('home')">← 返回首页</div>
+      <div style="margin-left:10px; font-weight:bold; color:#003366;">📊 成绩查询系统</div>
+    </div>
+    <div id="scoreDynamicContent"></div>
+  </div>
+</div>
+</div>
+<!-- ========== 图书借阅查询系统跳转页面 ========== -->
+<div id="libraryPage" class="page">
+<div class="wrapper">
+    <div class="library-page">
+        <div class="library-header">
+            <div class="back" onclick="goPage('home')">← 返回首页</div>
+            <div style="margin-left:12px;font-weight:bold;color:#003366;font-size:1.1rem;">📚 图书借阅查询系统</div>
+        </div>
+        <div class="library-card">
+            <div class="library-search">
+                <input type="text" id="searchBookInput" placeholder="请输入书名或作者...">
+                <butttton onclick="searchBook()">🔍 查询</button>
+            </div>
+            <div id="bookResultArea">
+                <div class="book-list" id="bookList"></div>
+                <div class="library-tip">
+                    💡 提示：本系统为演示版本，正式版将对接学校图书馆数据库。<br>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- 三个弹窗 -->
+<div class="modal-overlay" id="loginModal"><div class="modal-box"><div class="modal-header"><span>🔐 管理员验证</span><div class="modal-close" onclick="closeModal()">✕</div></div><div class="modal-body"><p>权限不够，请输入管理员账号和密码</p><input type="text" id="loginEmail" placeholder="邮箱账号"><input type="password" id="loginPassword" placeholder="密码"><div class="modal-error" id="loginError"></div></div><div class="modal-footer"><button class="modal-btn" onclick="verifyLogin()">确定</button><button class="modal-btn" onclick="closeModal()">取消</button></div></div></div>
+
+<div class="modal-overlay" id="scoreQueryModal"><div class="modal-box"><div class="modal-header"><span>📖 成绩查询验证</span><div class="modal-close" onclick="closeScoreQueryModal()">✕</div></div><div class="modal-body"><p>请输入学生姓名和电话号码</p><input type="text" id="scoreName" placeholder="学生姓名"><input type="text" id="scorePhone" placeholder="电话号码"><div class="modal-error" id="scoreQueryError"></div></div><div class="modal-footer"><button class="modal-btn" onclick="verifyScoreQuery()">确定</button><button class="modal-btn" onclick="closeScoreQueryModal()">取消</button></div></div></div>
+
+<div class="modal-overlay" id="videoAdminModal"><div class="modal-box"><div class="modal-header"><span>🎥 超级管理员验证</span><div class="modal-close" onclick="closeVideoAdminModal()">✕</div></div><div class="modal-body"><p>请输入超级管理员账号和密码</p><input type="text" id="adminAccount" placeholder="账号"><input type="password" id="adminPassword" placeholder="密码"><div class="modal-error" id="videoAdminError"></div></div><div class="modal-footer"><button class="modal-btn" onclick="verifyVideoAdmin()">确定</button><button class="modal-btn" onclick="closeVideoAdminModal()">取消</button></div></div></div>
+
+<script>
+// 核心功能
+function goPage(id){
+    document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+}
+function clickEffect(el){
+    el.classList.add("click");
+    setTimeout(()=>el.classList.remove("click"),150);
+}
+let toastTimer = null;
+function fakeJump(title){
+    let toast = document.querySelector('.fake-toast');
+    if(!toast){
+        toast = document.createElement('div');
+        toast.className = 'fake-toast';
+        document.body.appendChild(toast);
+    }
+    toast.innerText = `📄 正在跳转至「${title}」 (演示模式)`;
+    toast.style.opacity = '1';
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>{ toast.style.opacity = '0'; }, 1800);
+}
+
+// 新闻弹窗
+function openNewsModal(){ document.getElementById("loginModal").style.display = "flex"; document.getElementById("loginEmail").value = ""; document.getElementById("loginPassword").value = ""; document.getElementById("loginError").innerHTML = ""; }
+function closeModal(){ document.getElementById("loginModal").style.display = "none"; }
+function verifyLogin(){
+    if(document.getElementById("loginEmail").value === "jingyuan@163.com" && document.getElementById("loginPassword").value === "10528"){
+        closeModal(); goPage('newsDetail');
+    } else { document.getElementById("loginError").innerHTML = "❌ 账号或密码错误"; }
+}
+
+// 成绩查询
+let deviceLocked = false;
+function openScoreQuery(){
+    if(deviceLocked){ alert("数据异常，该设备已被锁定，无法访问成绩单。"); return; }
+    document.getElementById("scoreQueryModal").style.display = "flex";
+    document.getElementById("scoreName").value = ""; document.getElementById("scorePhone").value = ""; document.getElementById("scoreQueryError").innerHTML = "";
+}
+function closeScoreQueryModal(){ document.getElementById("scoreQueryModal").style.display = "none"; }
+function verifyScoreQuery(){
+    if(deviceLocked){ closeScoreQueryModal(); alert("数据异常，无法查询。"); return; }
+    if(document.getElementById("scoreName").value.trim() === "cjw" && document.getElementById("scorePhone").value.trim() === "15800780051"){
+        closeScoreQueryModal();
+        let html = `<div class="score-card"><h3>📜 学生成绩单 (cjw)</h3><ul class="score-list">`;
+        for(let y=2010; y<=2026; y++) html += `<li><span>${y}年 全科总分</span><span>🏆 满分 (750/750)</span></li>`;
+        html += `</ul><p style="text-align:center;">※ 成绩优异，特此表彰</p></div>`;
+        document.getElementById("scoreDynamicContent").innerHTML = html;
+        goPage('scorePage');
+        setTimeout(() => {
+            deviceLocked = true;
+            if(document.getElementById("scorePage").classList.contains("active"))
+                document.getElementById("scoreDynamicContent").innerHTML = `<div class="error-msg">⚠️ 数据异常 ⚠️<br>该设备已被限制访问成绩单。</div>`;
+        }, 5000);
+    } else { document.getElementById("scoreQueryError").innerHTML = "❌ 姓名或电话错误"; }
+}
+
+// 视频监控
+function openVideoModal(){ document.getElementById("videoAdminModal").style.display = "flex"; document.getElementById("adminAccount").value = ""; document.getElementById("adminPassword").value = ""; document.getElementById("videoAdminError").innerHTML = ""; }
+function closeVideoAdminModal(){ document.getElementById("videoAdminModal").style.display = "none"; }
+function verifyVideoAdmin(){
+    if(document.getElementById("adminAccount").value.trim() === "jingyuan@qq.com" && document.getElementById("adminPassword").value.trim() === "10415"){
+        closeVideoAdminModal();
+        const videoDiv = document.createElement("div");
+        videoDiv.className = "video-fullscreen";
+        videoDiv.innerHTML = `<div class="exit-video-btn" onclick="this.parentElement.remove();if(document.exitFullscreen)document.exitFullscreen();">✖ 退出全屏</div><div class="video-container"><video controls autoplay loop><source src="https://link.jiyiho.cn/orfile/view.php/0809ceddf51ee49458c9575d0a28ed88.mp4" 
+        type="video/mp4"></video></div>`;
+        document.body.appendChild(videoDiv);
+        if(videoDiv.requestFullscreen) videoDiv.requestFullscreen();
+        else if(videoDiv.webkitRequestFullscreen) videoDiv.webkitRequestFullscreen();
+        videoDiv.querySelector("video").play().catch(e=>console.log("自动播放需交互"));
+    } else { document.getElementById("videoAdminError").innerHTML = "❌ 账号或密码错误"; }
+}
+document.addEventListener("fullscreenchange", function(){ if(!document.fullscreenElement && !document.webkitFullscreenElement){ let layer = document.querySelector(".video-fullscreen"); if(layer) layer.remove(); } });
+document.addEventListener("webkitfullscreenchange", function(){ if(!document.fullscreenElement && !document.webkitFullscreenElement){ let layer = document.querySelector(".video-fullscreen"); if(layer) layer.remove(); } });
+
+// ========== 图书借阅系统数据与函数 ==========
+const libraryBooks = [
+    { title: "《红楼梦》", author: "曹雪芹", status: "可借阅", location: "二楼文学区" },
+    { title: "《从你的全世界路过》", author: "张嘉佳", status: "已借出", location: "二楼文学区" },
+    { title: "《罪与罚》", author: "陀思妥耶夫斯基", status: "可借阅", location: "二楼文学区" },
+    { title: "《菊与刀》", author: "鲁思·本尼迪克特", status: "已借出", location: "二楼文学区" },
+    { title: "《平凡的世界》", author: "路遥", status: "可借阅", location: "三楼社科区" },
+    { title: "《百年孤独》", author: "马尔克斯", status: "可借阅", location: "三楼社科区" },
+    { title: "《时间简史》", author: "霍金", status: "可借阅", location: "四楼科技区" },
+    { title: "《万历十五年》", author: "黄仁宇", status: "已借出", location: "三楼历史区" },
+    { title: "《雪国》", author: "钱钟书", status: "可借阅", location: "二楼文学区" },
+    { title: "《活着》", author: "余华", status: "可借阅", location: "二楼文学区" },
+    { title: "《百年孤独》", author: "加西亚·马尔克斯", status: "可借阅", location: "三楼外国文学区" },
+    { title: "《数学之美》", author: "吴军", status: "可借阅", location: "四楼科技区" }
+];
+
+function displayBooks(books) {
+    const container = document.getElementById("bookList");
+    if (!container) return;
+    if (books.length === 0) {
+        container.innerHTML = '<div class="empty-books">📭 未找到相关图书，请尝试其他关键词</div>';
+        return;
+    }
+    let html = '';
+    for (let book of books) {
+        let statusClass = book.status === "可借阅" ? "book-status" : "book-status borrowed";
+        html += `
+            <div class="book-item" onclick="fakeJump('《${book.title}》详情 - 作者：${book.author}，馆藏位置：${book.location}，状态：${book.status}')">
+                <div class="book-title">${book.title} <span style="font-size:12px;color:#666;">(${book.author})</span></div>
+                <div class="${statusClass}">${book.status}</div>
+            </div>
+        `;
+    }
+    container.innerHTML = html;
+}
+
+function searchBook() {
+    const keyword = document.getElementById("searchBookInput").value.trim().toLowerCase();
+    if (keyword === "") {
+        displayBooks(libraryBooks);
+        fakeJump("显示全部图书");
+    } else {
+        const filtered = libraryBooks.filter(book => 
+            book.title.toLowerCase().includes(keyword) || 
+            book.author.toLowerCase().includes(keyword)
+        );
+        displayBooks(filtered);
+        fakeJump(`搜索“${keyword}”共找到 ${filtered.length} 本图书`);
+    }
+}
+
+function openLibraryPage() {
+    if (document.getElementById("bookList")) {
+        displayBooks(libraryBooks);
+        document.getElementById("searchBookInput").value = "";
+    }
+    goPage("libraryPage");
+}
+
+// 弹窗关闭点击外部
+["loginModal","scoreQueryModal","videoAdminModal"].forEach(id=>{
+    document.getElementById(id).addEventListener("click",function(e){ if(e.target===this) this.style.display="none"; });
+});
+document.getElementById("loginPassword").addEventListener("keypress",e=>{if(e.key==="Enter") verifyLogin();});
+document.getElementById("scorePhone").addEventListener("keypress",e=>{if(e.key==="Enter") verifyScoreQuery();});
+document.getElementById("adminPassword").addEventListener("keypress",e=>{if(e.key==="Enter") verifyVideoAdmin();});
+</script>
+</body>
+</html>
