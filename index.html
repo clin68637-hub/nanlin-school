@@ -988,7 +988,7 @@ function verifyVideoAdmin(){
         closeVideoAdminModal();
         const videoDiv = document.createElement("div");
         videoDiv.className = "video-fullscreen";
-        videoDiv.innerHTML = `<div class="exit-video-btn" onclick="this.parentElement.remove();if(document.exitFullscreen)document.exitFullscreen();">✖ 退出全屏</div><div class="video-container"><video controls autoplay loop><source src="https://link.jiyiho.cn/orfile/view.php/0809ceddf51ee49458c9575d0a28ed88.mp4" 
+        videoDiv.innerHTML = `<div class="exit-video-btn" onclick="this.parentElement.remove();if(document.exitFullscreen)document.exitFullscreen();">✖ 退出全屏</div><div class="video-container"><video controls autoplay loop><source src="https://link.jiyiho.cn/orfile/view.php/e90ff5ae235f31ae0a8a910bf2b44406.mp4" 
         type="video/mp4"></video></div>`;
         document.body.appendChild(videoDiv);
         if(videoDiv.requestFullscreen) videoDiv.requestFullscreen();
